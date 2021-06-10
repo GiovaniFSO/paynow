@@ -1,0 +1,19 @@
+<table class="table">
+    <thead>
+        <th>Nome</th>
+        <th>Forma de Pagamento</th>
+        <th>Taxa %</th>
+        <th>Taxa Máxima</th>
+    </thead>
+<tbody>
+<% @payment_methods.each do |payment_method|%>
+  <tr>  
+    <td><%=payment_method.name%></td>
+    <td><%=payment_method.kind%></td>
+    <td><%=number_to_percentage(payment_method.fee, precision: 2)  %></td>
+    <td><%=number_to_currency payment_method.max_fee  %></td>
+  </tr>
+<%end%>
+</tbody>
+</table>
+<%= link_to 'Novo meio de pagamento', new_admin_payment_method_path %>

@@ -11,12 +11,14 @@
   </head>
 
   <body>
-    <nav>
-      <% if admin_signed_in? %>
-        <%= current_admin.email %>
-        <%= link_to 'Sair', destroy_admin_session_path, method: :delete %>
-      <% end %>
-    </nav>
+    <% if admin_signed_in? %>
+      <%= render 'shared/top_navbar'%>    
+    <% end %>
+    <%=notice%>
+    <%=alert%>
+
+    <br>
+    <%= render 'shared/sidebar' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
