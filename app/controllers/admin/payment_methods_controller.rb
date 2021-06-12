@@ -8,10 +8,14 @@ class Admin::PaymentMethodsController < ApplicationController
     @payment_method = PaymentMethod.new
   end
 
+  def show
+    @payment_method = PaymentMethod.find(params[:id])
+  end
+
   def create
     @payment_method = PaymentMethod.new(payment_method_params)
     if @payment_method.save
-      redirect_to admin_payment_methods_path  
+      redirect_to [:admin, @payment_method]
     else
       render :new  
     end
@@ -20,6 +24,6 @@ class Admin::PaymentMethodsController < ApplicationController
   private
 
   def payment_method_params
-    params.require(:payment_method).permit(:kind, :name, :fee, :max_fee, :active)
+    params.require(:payment_method).permit(:kind, :name, :fee, :max_fee, :active, :icon)
   end
 end

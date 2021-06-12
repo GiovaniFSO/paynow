@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root 'admin/dashboard#index'
   namespace :admin do 
     resources :dashboard, only: %i[index]
-    resources :payment_methods #, only: %i[index new create]
+    resources :payment_methods, only: %i[index new create show]
   end
 end

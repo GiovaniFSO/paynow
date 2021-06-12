@@ -5,12 +5,14 @@ describe 'Admin register payment method' do
     visit admin_payment_methods_path
 
     expect(current_path).to eq(new_admin_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se')
   end
 
   it 'must to be logged create the payment methods' do 
     visit new_admin_payment_method_path
 
     expect(current_path).to eq(new_admin_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se')
   end
 
   it 'successfully' do
@@ -24,13 +26,14 @@ describe 'Admin register payment method' do
     fill_in 'Nome', with: 'nubank'
     fill_in 'Taxa por Cobrança em (%)', with: 7
     fill_in 'Taxa Máxima em (R$)', with: 18
+    attach_file('Icone do Meio de Pagamento', Rails.root.join('public', 'assets', 'boleto.png'))
+
     click_on 'Criar'
 
-    expect(current_path).to eq(admin_payment_methods_path)
     expect(page).to have_content('nubank')
     expect(page).to have_content('7,00%')
     expect(page).to have_content('R$ 18,00')
-    #TODO attach
+    expect(page).to have_css('img[src*="boleto.png"]')
   end  
 
   it "and attributes can't be blank " do
