@@ -13,12 +13,10 @@
   <body>
     <% if admin_signed_in? %>
       <%= render 'shared/top_navbar'%>    
+      <br>
+      <%= render 'shared/sidebar' %>
     <% end %>
-    <%=notice%>
-    <%=alert%>
-
-    <br>
-    <%= render 'shared/sidebar' %>
+    
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
