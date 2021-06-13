@@ -1,13 +1,6 @@
 require 'rails_helper'
 
 describe 'Admin register payment method' do
-  it 'must to be logged to view the payment methods' do 
-    visit admin_payment_methods_path
-
-    expect(current_path).to eq(new_admin_session_path)
-    expect(page).to have_content('Para continuar, efetue login ou registre-se')
-  end
-
   it 'must to be logged create the payment methods' do 
     visit new_admin_payment_method_path
 
@@ -46,4 +39,6 @@ describe 'Admin register payment method' do
 
     expect(page).to have_content('não pode ficar em branco', count: 4)
   end
+
+  #TODO uniq  kind + name
 end
