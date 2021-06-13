@@ -1,6 +1,6 @@
 class Admin::PaymentMethodsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_payment_method, only: %i[show update edit]
+  before_action :set_payment_method, only: %i[show update edit destroy]
 
   def index
     @payment_methods = PaymentMethod.all
@@ -26,6 +26,11 @@ class Admin::PaymentMethodsController < ApplicationController
   def update
     @payment_method.update(payment_method_params)
     redirect_to [:admin, @payment_method], notice: 'Atualizado com sucesso'
+  end
+
+  def destroy
+    @payment_method.destroy
+    redirect_to admin_payment_methods_path, notice: 'Meio de pagamento deletado com sucesso'
   end
 
   private

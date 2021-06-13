@@ -26,7 +26,7 @@ describe 'Admin update payment_method' do
     payment_method = PaymentMethod.create(name: 'roxinho', fee: 2.5, max_fee: 15, kind: 1, 
                                           icon: fixture_file_upload(Rails.root.join('public', 'assets', 'boleto.png')))
     visit edit_admin_payment_method_path(payment_method)                                      
-
+    
     expect(current_path).to eq(new_admin_session_path)
   end
 end
