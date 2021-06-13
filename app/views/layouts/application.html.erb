@@ -11,8 +11,8 @@
   </head>
 
   <body>
-    <% if admin_signed_in? %>
-      <%= render 'shared/top_navbar'%>    
+    <% if admin_signed_in? || user_signed_in? %>
+      <%= render 'shared/top_navbar', user: current_admin || current_user%>    
       <br>
       <%= render 'shared/sidebar' %>
     <% end %>
