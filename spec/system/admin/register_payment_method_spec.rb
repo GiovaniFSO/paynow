@@ -21,7 +21,7 @@ describe 'Admin register payment method' do
     fill_in 'Taxa Máxima em (R$)', with: 18
     attach_file('Icone do Meio de Pagamento', Rails.root.join('public', 'assets', 'boleto.png'))
 
-    click_on 'Criar'
+    click_on 'Salvar'
 
     expect(page).to have_content('nubank')
     expect(page).to have_content('7,00%')
@@ -35,7 +35,7 @@ describe 'Admin register payment method' do
     click_on 'Meios de pagamentos'
     click_on 'Novo meio de pagamento'
 
-    click_on 'Criar'
+    click_on 'Salvar'
 
     expect(page).to have_content('não pode ficar em branco', count: 4)
   end

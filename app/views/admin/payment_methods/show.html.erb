@@ -1,10 +1,8 @@
 <h1><%= @payment_method.name %></h1>
 <d1>
+  <dd><%= @payment_method.kind %></dd>
   <dt><%= number_to_percentage(@payment_method.fee, precision: 2)%></dt>
   <dd><%= number_to_currency @payment_method.max_fee %></dd>
   <dt><%= image_tag(@payment_method.icon)%></dt>
   <dd><%= @payment_method.active %></dd>
 </d1>
-
-<%#= button_to 'Editar', edit_instructor_path(@instructor), method: :get %>
-<%#= link_to 'Voltar', instructors_path %>

@@ -1,15 +1,15 @@
 class Admin::PaymentMethodsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_payment_method, only: %i[show update edit]
+
   def index
     @payment_methods = PaymentMethod.all
   end  
-
+  
+  def show; end
+  
   def new
     @payment_method = PaymentMethod.new
-  end
-
-  def show
-    @payment_method = PaymentMethod.find(params[:id])
   end
 
   def create
@@ -21,7 +21,18 @@ class Admin::PaymentMethodsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    @payment_method.update(payment_method_params)
+    redirect_to [:admin, @payment_method], notice: 'Atualizado com sucesso'
+  end
+
   private
+
+  def set_payment_method
+    @payment_method = PaymentMethod.find(params[:id])
+  end
 
   def payment_method_params
     params.require(:payment_method).permit(:kind, :name, :fee, :max_fee, :active, :icon)

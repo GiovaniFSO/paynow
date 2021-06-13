@@ -1,0 +1,16 @@
+<%= form_with model: [:admin, payment_method] do |f| %>
+  <%= render "shared/error_messages", resource: payment_method %>
+  <%=f.label :kind, 'Forma de Pagamento'%>  
+  <%=f.select :kind, PaymentMethod.kinds.keys, prompt: "Selecione"%>
+  <%=f.label :name, 'Nome'%>  
+  <%=f.text_field :name%>
+  <%=f.label :fee, 'Taxa por Cobrança em (%)'%>  
+  <%=f.text_field :fee%>
+  <%=f.label :max_fee, 'Taxa Máxima em (R$)'%>  
+  <%=f.text_field :max_fee%>
+  <%= f.label :icon, 'Icone do Meio de Pagamento' %>
+  <%= f.file_field :icon %>
+  <%=f.label :active%>  
+  <%=f.text_field :active%>
+  <%=f.submit 'Salvar' %>  
+<% end %>
