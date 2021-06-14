@@ -35,6 +35,6 @@
 yarn-debug.log*
 .yarn-integrity
 
-db
+db/*.sqlite3
 
 storage
