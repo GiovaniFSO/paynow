@@ -1,6 +1,8 @@
 class User::DashboardController < ApplicationController
-    before_action :authenticate_user!
+  before_action :authenticate_user!
   
   def index
   end  
+
+  
 end
