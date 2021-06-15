@@ -13,5 +13,6 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :dashboard, only: %i[index]    
+    resources :companies, only: %i[new create]    
   end
 end

@@ -14,7 +14,7 @@ describe 'Account Management' do
 
       expect(page).to have_content 'Login efetuado com sucesso.'
       expect(page).to have_link 'Sair'
-      expect(current_path).to eq root_path
+      expect(current_path).to eq new_user_company_path
     end 
 
     it 'with email not valid' do 
@@ -72,7 +72,7 @@ describe 'Account Management' do
       expect(page).to have_content 'Login efetuado com sucesso!'
       expect(page).to have_content 'giovani@codeplay.com.br'
       expect(page).to have_link 'Sair'
-      expect(current_path).to eq root_path
+      expect(current_path).to eq new_user_company_path
     end
 
     it 'with valid email but not registered' do

@@ -1,0 +1,13 @@
+<%= form_with model: [:user, @company] do |f| %>
+  <%= render "shared/error_messages", resource: @company %>
+  <%=f.label :cnpj%>  
+  <%=f.text_field :cnpj%>
+  <%=f.label :name, 'Nome'%>  
+  <%=f.text_field :name%>
+  <%=f.label :email%>  
+  <%=f.text_field :email%>
+  <%=f.label :address, 'Endereço'%>  
+  <%=f.text_field :address%>
+  
+  <%=f.submit 'Salvar' %>  
+<% end %>
