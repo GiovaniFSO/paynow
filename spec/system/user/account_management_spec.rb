@@ -16,6 +16,24 @@ describe 'Account Management' do
       expect(page).to have_link 'Sair'
       expect(current_path).to eq new_user_company_path
     end 
+    it 'with email, password and company' do  
+      company = Company.create!(cnpj: '12345678912345', name: 'Codeplay', address: 'rua chegando na esquinda',
+                      email: 'empresa@codeplay.com.br', block: 1, token: SecureRandom.hex(10))
+      User.create!(email: 'fulano@codeplay.com.br', password: '123456', company_id: company.id)
+
+      visit root_path
+      click_on 'Login'
+      click_on 'Registre-se'
+
+      fill_in 'Email', with: 'giovani@codeplay.com.br'
+      fill_in 'Senha', with: '123456'
+      fill_in 'Confirmação de Senha', with: '123456'
+      click_on 'Criar Usuário(a)'
+
+      expect(page).to have_content 'Login efetuado com sucesso.'
+      expect(page).to have_link 'Sair'
+      expect(current_path).to eq root_path
+    end 
 
     it 'with email not valid' do 
       visit root_path

@@ -1,4 +1,5 @@
 class Company < ApplicationRecord
+  enum block: {desbloqueado: 1, bloqueado: 2}  
   has_many :users  
   
   before_create :set_token
