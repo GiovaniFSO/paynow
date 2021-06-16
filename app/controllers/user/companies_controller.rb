@@ -7,12 +7,15 @@ class User::CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-    if @company.save
-      @user.company_id = @company
-      @user.save
-      redirect_to '/'
-    else
-      render :new  
+    Company.transaction do 
+      if @company.save
+        @user.company_id = @company
+        @user.administrador!
+        @user.save
+        redirect_to '/'
+      else
+        render :new  
+      end
     end
   end
 

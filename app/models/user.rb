@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  enum adm: {usuario: 0, administrador: 1}  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
