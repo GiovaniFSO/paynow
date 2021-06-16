@@ -3,4 +3,5 @@ class PaymentMethod < ApplicationRecord
   has_one_attached :icon, dependent: :destroy  
 
   validates :fee, :name, :max_fee, :kind,  presence: true
+  validates :fee, :max_fee, numericality: true
 end

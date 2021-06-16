@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Account Management' do 
+describe 'User account Management' do 
   context 'registration' do 
     it 'with email and password' do  
       visit root_path

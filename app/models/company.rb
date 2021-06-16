@@ -2,6 +2,9 @@ class Company < ApplicationRecord
   enum block: {desbloqueado: 1, bloqueado: 2}  
   has_many :users  
   
+  validates :cnpj, :name, :address, :email, presence: true
+  validates :cnpj, length: { is: 14 }, numericality: true, uniqueness: true  
+
   before_create :set_token
 
   private

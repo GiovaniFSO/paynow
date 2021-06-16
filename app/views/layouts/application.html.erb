@@ -14,7 +14,9 @@
     <% if admin_signed_in? || user_signed_in? %>
       <%= render 'shared/top_navbar', user: current_admin || current_user%>    
       <br>
-      <%= render 'shared/sidebar' %>
+      <% unless current_page?(new_user_company_path) %>
+        <%= render 'shared/sidebar' %>
+      <% end %>
     <% end %>
     
     <p class="notice"><%= notice %></p>
