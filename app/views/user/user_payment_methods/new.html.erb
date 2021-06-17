@@ -1,0 +1,21 @@
+<%= form_with scope: @payment_method.kind, url: [:user, @payment_method, @user_payment_method] do |f| %>
+    <%= render "shared/error_messages", resource: @user_payment_method %>
+    <% if @payment_method.kind == 'pix'%>
+      <%=f.label :key, 'Chave PIX'%>  
+      <%=f.text_field :key %>  
+      <%=f.label :bank_code, 'Codigo do banco'%>  
+      <%=f.text_field :bank_code %>
+    <% elsif @payment_method.kind == 'credit_card'%>  
+      <%=f.label :account, 'Numero do cartão'%>  
+      <%=f.text_field :account %>  
+    <% else %>
+      <%=f.label :bank_code, 'Código do banco'%>  
+      <%=f.text_field :bank_code %>  
+      <%=f.label :agency, 'Agência'%>  
+      <%=f.text_field :agency %>  
+      <%=f.label :account, 'Conta bancária'%>  
+      <%=f.text_field :account %>  
+    <% end %>
+    
+    <%=f.submit 'Salvar' %>  
+  <% end %>

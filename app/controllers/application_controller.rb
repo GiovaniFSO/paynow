@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
       stored_location_for(resource) || root_path
     else
       stored_location_for(resource) || '/admin'
-    end
+    end    
   end  
 end

@@ -1,0 +1,28 @@
+<h1><%= @payment_method.name %></h1>
+<d1>
+  <dt>Meio de Pagamento</dt>
+  <dd><%= @payment_method.kind %></dd>
+  <dt>Taxa %</dt>
+  <dd><%= number_to_percentage(@payment_method.fee, precision: 2)%></dd>
+  <dt>Taxa Máxima R$</dt>
+  <dd><%= number_to_currency @payment_method.max_fee %></dd>
+  <dt><%= image_tag(@payment_method.icon)%></dt>
+  <dd><%= @payment_method.active ? 'Ativo' : 'Inativo' %></dd>
+  <% if @user_payment_method.kind_type == 'Pix'%>
+    <dd>Chave</dd>
+    <dt><%= @user_payment_method.kind.key%></dt>
+    <dd>Código de banco</dd>
+    <dt><%= @user_payment_method.kind.bank_code%></dt>
+  <% elsif @user_payment_method.kind_type == 'Boleto' %>
+    <dd>Código de banco</dd>
+    <dt><%= @user_payment_method.kind.bank_code%></dt>
+    <dd>Agência</dd>
+    <dt><%= @user_payment_method.kind.agency %></dt>
+    <dd>Conta bancária</dd>
+    <dt><%= @user_payment_method.kind.account %></dt>
+  <% else %>
+    <dd>Conta bancária</dd>
+    <dt><%= @user_payment_method.kind.account %></dt>
+  <% end %>
+  <td><%=link_to 'Configurar', new_user_payment_method_user_payment_method_path(@payment_method), class: 'details'%></td>
+</d1>

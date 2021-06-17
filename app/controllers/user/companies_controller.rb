@@ -9,7 +9,7 @@ class User::CompaniesController < ApplicationController
     @company = Company.new(company_params)
     Company.transaction do 
       if @company.save
-        @user.company_id = @company
+        @user.company_id = @company.id
         @user.administrador!
         @user.save
         redirect_to '/'

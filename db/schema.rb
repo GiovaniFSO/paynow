@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_16_193622) do
+ActiveRecord::Schema.define(version: 2021_06_16_211610) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 2021_06_16_193622) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "boletos", force: :cascade do |t|
+    t.string "bank_code"
+    t.string "agency"
+    t.string "account"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string "cnpj"
     t.string "name"
@@ -59,6 +67,12 @@ ActiveRecord::Schema.define(version: 2021_06_16_193622) do
     t.string "email"
     t.string "token"
     t.integer "block", default: 1
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "account"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -71,6 +85,25 @@ ActiveRecord::Schema.define(version: 2021_06_16_193622) do
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pixes", force: :cascade do |t|
+    t.string "key"
+    t.string "bank_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_payment_methods", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "payment_method_id", null: false
+    t.string "kind_type"
+    t.integer "kind_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["kind_type", "kind_id"], name: "index_user_payment_methods_on_kind"
+    t.index ["payment_method_id"], name: "index_user_payment_methods_on_payment_method_id"
+    t.index ["user_id"], name: "index_user_payment_methods_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,5 +123,7 @@ ActiveRecord::Schema.define(version: 2021_06_16_193622) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "user_payment_methods", "payment_methods"
+  add_foreign_key "user_payment_methods", "users"
   add_foreign_key "users", "companies"
 end

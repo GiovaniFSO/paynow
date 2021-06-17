@@ -13,14 +13,21 @@
   <body>
     <% if admin_signed_in? || user_signed_in? %>
       <%= render 'shared/top_navbar', user: current_admin || current_user%>    
-      <br>
-      <% unless current_page?(new_user_company_path) %>
-        <%= render 'shared/sidebar' %>
-      <% end %>
+      <br>   
     <% end %>
     
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+      <div class="row">
+        <% if !current_page?(new_user_company_path) && (admin_signed_in? || user_signed_in?) %>
+          <%= render 'shared/sidebar' %>
+        <% end %>
+
+        
+        <div class="col-md-8 ms-sm-auto col-lg-9 me-4">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <%= yield %>
+          
+        </div>
+      </div>
   </body>
 </html>
