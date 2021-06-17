@@ -13,7 +13,15 @@ class User::UserPaymentMethodsController < ApplicationController
         @payment_method = @user_payment_method.payment_method_id
         redirect_to @user_payment_method
       else
-        byebug
+        @payment_method = PaymentMethod.find(params[:payment_method_id])
+
+        if @user_payment_method.payment_method.kind == 'pix'
+          flash[:alert] = 'Chave Pix ou código de banco inválido'
+        elsif @user_payment_method.payment_method.kind == 'boleto'
+          flash[:alert] = 'Código de banco, agência, ou conta bancária inválido'
+        else
+          flash[:alert] = 'Numero do cartão inválido'
+        end
         render :new  
       end
     end

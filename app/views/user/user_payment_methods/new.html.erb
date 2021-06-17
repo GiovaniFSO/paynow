@@ -1,5 +1,4 @@
 <%= form_with scope: @payment_method.kind, url: [:user, @payment_method, @user_payment_method] do |f| %>
-    <%= render "shared/error_messages", resource: @user_payment_method %>
     <% if @payment_method.kind == 'pix'%>
       <%=f.label :key, 'Chave PIX'%>  
       <%=f.text_field :key %>  
