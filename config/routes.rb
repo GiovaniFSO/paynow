@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: %i[index]    
     resources :companies, only: %i[new create]    
     resources :payment_methods, only: %i[show index] do
-      resources :user_payment_methods, only: %i[show new create]
+      resources :user_payment_methods, only: %i[show new create edit update]
     end
   end
 end

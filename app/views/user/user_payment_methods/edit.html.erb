@@ -1,0 +1,30 @@
+<h1>Editar configuração do meio de pagamento</h1>
+
+<%= form_with scope: @payment_method.kind, model: [:user, @payment_method, @user_payment_method] do |f| %>
+  <% if @payment_method.kind == 'pix'%>      
+    <%= fields_for f.object.kind do |pix| %>
+      <%= pix.label :key, 'Chave PIX'%>  
+      <%= pix.text_field :key %>  
+      <%= pix.label :bank_code, 'Codigo do banco'%>  
+      <%= pix.text_field :bank_code %>
+    <% end %>
+  <% elsif @payment_method.kind == 'credit_card'%>  
+    <%= fields_for f.object.kind do |credit_card| %>
+      <%=credit_card.label :account, 'Numero do cartão'%>  
+      <%=credit_card.text_field :account %>
+    <% end %>
+  <% else %>
+    <%= fields_for f.object.kind do |boleto| %>
+      <%= boleto.label :bank_code, 'Código do banco'%>  
+      <%= boleto.text_field :bank_code %>  
+      <%= boleto.label :agency, 'Agência'%>  
+      <%= boleto.text_field :agency %>  
+      <%= boleto.label :account, 'Conta bancária'%>  
+      <%= boleto.text_field :account %>  
+    <% end %>
+  <% end %>
+  <%=f.submit 'Salvar' %>  
+<% end %>
+              
+          
+    

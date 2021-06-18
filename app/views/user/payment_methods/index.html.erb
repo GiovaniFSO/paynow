@@ -16,7 +16,14 @@
       <td><%=payment_method.kind%></td>
       <td><%=number_to_percentage(payment_method.fee, precision: 2)  %></td>
       <td><%=number_to_currency payment_method.max_fee  %></td>
-      <td><%=link_to 'Configurar', new_user_payment_method_user_payment_method_path(payment_method), class: 'visualizar'%></td>
+      <td>
+        <% user_payment_method = UserPaymentMethod.find_by(user_id: current_user.id, payment_method_id: payment_method.id)%>
+        <% if user_payment_method.blank? %>
+          <%= link_to "Configurar", new_user_payment_method_user_payment_method_path(payment_method), class: 'visualizar'%>
+        <% else %>
+          <%= link_to "Editar", edit_user_payment_method_user_payment_method_path(payment_method.id, user_payment_method), class: 'visualizar' %>
+        <% end %>
+      </td>
     </tr>
   <%end%>
   </tbody>
