@@ -1,0 +1,13 @@
+<%= form_with model: [:user, product] do |f| %>
+  <%= render "shared/error_messages", resource: product %>
+  <%=f.label :name, 'Nome'%>  
+  <%=f.text_field :name %>  
+  <%=f.label :user_payment_method_id, 'Forma de pagamento'%>  
+  <%=f.select :user_payment_method_id, @payment_methods, prompt: "Selecione"%>
+  <%=f.label :value, 'Preço'%>  
+  <%=f.text_field :value %>
+  <%=f.label :discount, 'Desconto %'%>  
+  <%=f.text_field :discount %>  
+  <%=f.submit 'Salvar' %>  
+<% end %>
+              

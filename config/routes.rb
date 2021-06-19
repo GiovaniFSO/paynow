@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     resources :payment_methods, only: %i[show index] do
       resources :user_payment_methods, only: %i[show new create edit update]
     end
-    resources :products, only: %i[index new create show]
+    resources :products, only: %i[index new create show update edit]
   end
 end

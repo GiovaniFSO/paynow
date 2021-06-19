@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  has_paper_trail on: [:update]
+  #PaperTrail.serializer.load(Product.first.versions.first.object)
   belongs_to :user
   belongs_to :user_payment_method
 
