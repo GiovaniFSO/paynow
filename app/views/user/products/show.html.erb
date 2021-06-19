@@ -1,0 +1,11 @@
+<h1><%= @product.name %></h1>
+<d1>
+  <dt>Preço</dt>
+  <dd><%= number_to_currency @product.value %></dd>
+  <dt>Desconto %</dt>
+  <dd><%= number_to_percentage(@product.discount, precision: 2)%></dd>
+  <dt>Forma de Pagamento</dt>
+  <dd><%="#{@product.user_payment_method.payment_method.kind} - #{@product.user_payment_method.payment_method.name}"%></dd>
+  <dt>Token</dt>
+  <dd><%= @product.token %></dd>
+</d1>

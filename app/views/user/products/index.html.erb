@@ -1,0 +1,28 @@
+<% if @products.blank? %>
+  <h3>Nenhum produto cadastrado</h3>
+<% end %>
+<%= link_to 'Cadastrar Produto', new_user_product_path%>
+<table class="table">
+  <thead>
+      <th>Nome</th>
+      <th>Forma de Pagamento</th>
+      <th>Desconto %</th>
+      <th>Preço</th>
+      <th>Token</th>
+      <th>Ação</th>
+  </thead>
+  <tbody>
+  <% @products.each do |product|%>
+    <tr>  
+      <td><%=product.name%></td>
+      <td><%="#{product.user_payment_method.payment_method.kind} - #{product.user_payment_method.payment_method.name}"%></td>
+      <td><%=number_to_percentage(product.discount, precision: 2)  %></td>
+      <td><%=number_to_currency product.value  %></td>
+      <td><%=product.token%></td>
+      <td>
+        <%= link_to "Visualizar", [:user, product], class: 'visualizar'%>
+      </td>
+    </tr>
+  <%end%>
+  </tbody>
+</table>

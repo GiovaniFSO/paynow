@@ -17,8 +17,6 @@
             link_to "Meios de pagamentos", user_payment_methods_path,  class: 'nav-link link-dark'
           end
         %>
-
-        <%#= link_to 'Meios de pagamentos', admin_payment_methods_path, %>
       </li>
       <li>
         <a href="#" class="nav-link link-dark">
@@ -32,10 +30,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-          Customers
-        </a>
+        <%= link_to 'Produtos', user_products_path, class: 'nav-link link-dark' %>
       </li>
     </ul>
   </div>
