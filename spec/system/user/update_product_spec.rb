@@ -50,7 +50,7 @@ describe 'User update product' do
     click_on 'Editar'
     fill_in 'Nome', with: 'Curso Laravel'
     fill_in 'Preço', with: 75.0
-    select 'pix - roxinho', from: 'Forma de pagamento'
+    select 'boleto - vermelhinho', from: 'Forma de pagamento'
     fill_in 'Desconto %', with: 5.0
     click_on 'Salvar'
     
@@ -59,8 +59,8 @@ describe 'User update product' do
     expect(product.name).to eq 'Curso Laravel'
     expect(product.paper_trail.previous_version.value).to eq 60.0
     expect(product.value).to eq  75.0
-    expect(product.paper_trail.previous_version.user_payment_method_id).to eq 'Curso Ruby on Rails'
-    expect(product.name).to eq 'Curso Laravel'
+    expect(product.paper_trail.previous_version.user_payment_method_id).to eq 2
+    expect(product.user_payment_method_id).to eq 1
   end 
 
   it 'invalida params' do
