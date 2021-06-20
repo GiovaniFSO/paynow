@@ -1,6 +1,7 @@
 class Customer < ApplicationRecord
   has_many :company_customers  
   has_many :companies, through: :company_customers
+  has_many :orders, primary_key: :token, foreign_key: :token_customer
 
   before_validation :set_token
   
