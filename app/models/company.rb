@@ -3,6 +3,7 @@ class Company < ApplicationRecord
   has_many :users  
   has_many :company_customers
   has_many :customers, through: :company_customers
+  has_many :orders, primary_key: :token, foreign_key: :token_company
   
   validates :cnpj, :name, :address, :email, presence: true
   validates :cnpj, length: { is: 14 }, numericality: true, uniqueness: true  

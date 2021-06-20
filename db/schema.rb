@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_20_133503) do
+ActiveRecord::Schema.define(version: 2021_06_20_164032) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,12 @@ ActiveRecord::Schema.define(version: 2021_06_20_133503) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "boleto_details", force: :cascade do |t|
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "boletos", force: :cascade do |t|
     t.string "bank_code"
     t.string "agency"
@@ -80,6 +86,14 @@ ActiveRecord::Schema.define(version: 2021_06_20_133503) do
     t.index ["customer_id"], name: "index_company_customers_on_customer_id"
   end
 
+  create_table "credit_card_details", force: :cascade do |t|
+    t.string "number"
+    t.string "name"
+    t.string "safe_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "credit_cards", force: :cascade do |t|
     t.string "account"
     t.datetime "created_at", precision: 6, null: false
@@ -92,6 +106,26 @@ ActiveRecord::Schema.define(version: 2021_06_20_133503) do
     t.string "token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "order_details", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.string "info_type"
+    t.integer "info_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["info_type", "info_id"], name: "index_order_details_on_info"
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "token_company"
+    t.string "token_product"
+    t.integer "payment_method_id", null: false
+    t.string "token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["payment_method_id"], name: "index_orders_on_payment_method_id"
   end
 
   create_table "payment_methods", force: :cascade do |t|
@@ -166,6 +200,8 @@ ActiveRecord::Schema.define(version: 2021_06_20_133503) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "company_customers", "companies"
   add_foreign_key "company_customers", "customers"
+  add_foreign_key "order_details", "orders"
+  add_foreign_key "orders", "payment_methods"
   add_foreign_key "products", "user_payment_methods"
   add_foreign_key "products", "users"
   add_foreign_key "user_payment_methods", "payment_methods"

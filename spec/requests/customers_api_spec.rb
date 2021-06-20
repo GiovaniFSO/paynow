@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Customers API' do
-  context 'GET /api/v1/customers' do
+  context 'POST /api/v1/customers' do
     it 'should create a customer with a new association' do 
       company = Company.create(cnpj: '12345678654321', name: 'Codeplay', email: 'company@codeplay.com.br', address: 'rua chegando no Maracanã')
 

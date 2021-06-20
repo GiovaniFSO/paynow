@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   #PaperTrail.serializer.load(Product.first.versions.first.object)
   belongs_to :user
   belongs_to :user_payment_method
+  has_many :orders, primary_key: :token, foreign_key: :token_product
 
   validates :name, :value, :user_payment_method_id, :discount, presence: true
 
