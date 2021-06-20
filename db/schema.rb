@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_19_193831) do
+ActiveRecord::Schema.define(version: 2021_06_20_133503) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -71,8 +71,25 @@ ActiveRecord::Schema.define(version: 2021_06_19_193831) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "company_customers", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_customers_on_company_id"
+    t.index ["customer_id"], name: "index_company_customers_on_customer_id"
+  end
+
   create_table "credit_cards", force: :cascade do |t|
     t.string "account"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "cpf"
+    t.string "name"
+    t.string "token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -147,6 +164,8 @@ ActiveRecord::Schema.define(version: 2021_06_19_193831) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "company_customers", "companies"
+  add_foreign_key "company_customers", "customers"
   add_foreign_key "products", "user_payment_methods"
   add_foreign_key "products", "users"
   add_foreign_key "user_payment_methods", "payment_methods"

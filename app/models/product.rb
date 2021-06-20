@@ -7,9 +7,9 @@ class Product < ApplicationRecord
   validates :name, :value, :user_payment_method_id, :discount, presence: true
 
   before_create :set_token
-
+  
   private
-
+  
   def set_token
     self.token = SecureRandom.hex(10)
     set_token if Product.exists?(token: token)
