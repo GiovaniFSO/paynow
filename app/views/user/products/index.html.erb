@@ -9,7 +9,7 @@
       <th>Desconto %</th>
       <th>Preço</th>
       <th>Token</th>
-      <th>Ação</th>
+      <th colspan="2">Ação</th>
   </thead>
   <tbody>
   <% @products.each do |product|%>
@@ -21,6 +21,9 @@
       <td><%=product.token%></td>
       <td>
         <%= link_to "Visualizar", [:user, product], class: 'visualizar'%>
+      </td>
+      <td>
+        <%= link_to "Editar", edit_user_product_path(product), class: 'visualizar'%>
       </td>
     </tr>
   <%end%>
