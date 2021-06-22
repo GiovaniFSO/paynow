@@ -8,8 +8,48 @@
   <dd><%= number_to_currency @order.final_price %></dd>
   <dt>Client</dt>
   <dd><%= @order.customer.name %></dd>
+
+  <% if @order.payments.blank? %>
+    <h3>Nenhuma tentativa de pagamento efetuada</h3>
+  <% else %>
+    <h3>Histórico de transações</h3>
+  <% end %>
+  <table class="table">
+    <thead>
+        <th>Data</th>
+        <th>Status</th>
+        <th>Cód do banco</th>
+    </thead>
+    <tbody>
+    <% @order.payments.each do |payment|%>
+      <tr>  
+        <td><%= l payment.date %></td>
+        <td><%= payment.status.capitalize %></td>
+        <td><%= payment.status_bank.titleize  %></td>
+      </tr>
+    <%end%>
+    </tbody>
+  </table>
+
   <% unless @order.aprovada?%>
     <%= link_to 'Aprovar', approved_admin_order_path(@order), method: :post %>
   <%end%>
-  <%= link_to 'Rejeitar', reject_admin_order_path(@order), method: :post %>
+  <% unless @order.rejeitada?%>
+    <button type="button" id="reject" onClick='show_fields()' class="btn btn-link">Rejeitar</button>
+  <% end %>
+
+  <div id='status_bank_error' style="display: none;">
+    <%= form_with url: reject_admin_order_path(@order), method: :post do |f| %>
+      <%= f.label :status_bank, 'Motivo'%>
+      <%= f.select(:status_bank, options_for_select(Payment.status_banks.except(:cobranca_efetivada_com_sucesso).map { |status| [status[0].titleize, status[1]] })) %>
+      <%= f.submit 'Enviar' %>
+    <% end %>
+  </div>
 </d1>
+
+<script>
+  function show_fields() {
+    var element = document.getElementById("status_bank_error");
+    element.style.display = 'block';
+  }
+</script>

@@ -1,6 +1,6 @@
 class Admin::PaymentsController < ApplicationController
 
   def index
-    @orders = Order.where(status: Order.status[:pendente])
+    @orders = Order.all #.where(status: Order.status[:pendente])
   end
 end
