@@ -11,6 +11,9 @@ class Order < ApplicationRecord
   before_create :set_prices
   before_create :set_token
 
+  scope :from_date, ->(date) { where(created_at: date...) if date.present? }
+  scope :from_payment_method, ->(payment_method) { where(payment_method_id: payment_method) if payment_method.present? }
+
   private
 
   def set_prices

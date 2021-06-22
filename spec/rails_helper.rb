@@ -35,6 +35,7 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
   config.include LooginMacros
   config.include ParseJson
+  config.include ParseMoney
   config.before(type: :system) do
     driven_by :rack_test
   end
