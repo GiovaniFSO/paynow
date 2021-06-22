@@ -1,0 +1,15 @@
+<h1><%= @order.company.name %></h1>
+<d1>
+  <dt>Produto</dt>
+  <dd><%= @order.product.name %></dd>
+  <dt>Valor original</dt>
+  <dd><%= number_to_currency @order.original_price %></dd>
+  <dt>Valor Com desconto</dt>
+  <dd><%= number_to_currency @order.final_price %></dd>
+  <dt>Client</dt>
+  <dd><%= @order.customer.name %></dd>
+  <% unless @order.aprovada?%>
+    <%= link_to 'Aprovar', approved_admin_order_path(@order), method: :post %>
+  <%end%>
+  <%= link_to 'Rejeitar', reject_admin_order_path(@order), method: :post %>
+</d1>

@@ -1,0 +1,24 @@
+<% if @orders.blank? %>
+  <h3>Nenhum pedido efetuado</h3>
+<% end %>
+<table class="table">
+    <thead>
+        <th>Empresa</th>
+        <th>Produto</th>
+        <th>Preço</th>
+        <th>Status</th>
+        <th colspan="3">Ação</th>
+    </thead>
+<tbody>
+<% @orders.each do |payment|%>
+  <tr>  
+    <td><%=payment.company.name%></td>
+    <td><%=payment.product.name%></td>
+    <td><%=number_to_currency payment.final_price  %></td>
+    <td><%=payment.status.capitalize  %></td>
+    <td><%=link_to 'Visualizar', [:admin, payment], class: 'details'%></td>
+    <td><%#= link_to 'Deletar', [:admin, payment], method: :delete %></td>
+  </tr>
+<%end%>
+</tbody>
+</table>

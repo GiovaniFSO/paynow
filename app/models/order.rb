@@ -1,11 +1,12 @@
 class Order < ApplicationRecord
   enum status: {pendente: 1, rejeitada: 2, aprovada: 5}  
-
+  
   belongs_to :payment_method
   belongs_to :company, primary_key: 'token', foreign_key: 'token_company'
   belongs_to :product, primary_key: 'token', foreign_key: 'token_product'
   belongs_to :customer, primary_key: 'token', foreign_key: 'token_customer'
   has_many :order_details
+  has_many :payments
 
   before_create :set_prices
   before_create :set_token
