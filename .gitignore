@@ -38,3 +38,4 @@ yarn-debug.log*
 db/*.sqlite3
 
 storage
+coverage/*
