@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :user_payment_methods
     end
     resources :products
+    resources :orders, only: %i[index]
   end
 
   namespace :api do

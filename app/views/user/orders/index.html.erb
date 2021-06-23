@@ -1,0 +1,43 @@
+
+
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <%= link_to "Últimos 30 Dias", user_orders_path(filter: 'last_30_days'), class: "nav-link #{active('last_30_days') }"  %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Últimos 90 Dias", user_orders_path(filter: 'last_90_days'), class: "nav-link #{active('last_90_days') }"  %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Histórico Completo", user_orders_path(filter: 'full'), class: "nav-link #{active('full') }"  %>
+  </li>
+</ul>
+<% if @orders.blank? %>
+  <h3>Nenhum pedido efetuado</h3>
+<% end %>
+
+<table class="table">
+  <thead>
+      <th>Produto</th>
+      <th>Valor original</th>
+      <th>Desconto</th>
+      <th>Cliente</th>
+      <th>Status</th>
+      <th>Data de Vencimento</th>
+      <th>Ação</th>
+  </thead>
+  <tbody>
+  <% @orders.each do |order|%>
+    <tr>  
+      <td><%= order.product.name %></td>
+      <td><%= number_to_currency order.product.value %></td>
+      <td><%= number_to_percentage(order.product.discount, precision: 2) %></td>
+      <td><%= order.customer.name%></td>
+      <td><%= order.status %></td>
+      <td><%= l order.created_at %></td>
+      <td>
+        <%= link_to "Visualizar", '#', class: 'visualizar'%>
+      </td>
+    </tr>
+  <%end%>
+  </tbody>
+</table>

@@ -7,7 +7,7 @@ user_payment_method = UserPaymentMethod.create!(user_id: user.id, payment_method
 product = Product.create(name: 'Curso Ruby on Rails', value: 60.0, user_payment_method_id: user_payment_method.id, discount: 7.0, user_id: user.id)
 boleto_detail = BoletoDetail.create(address: 'rua perto do planato central, numero 515')
 order = Order.create(token_company: company.token, token_product: product.token, token_customer: company.customers.last.token,
-             payment_method_id: user_payment_method.payment_method_id)
+             payment_method_id: user_payment_method.payment_method_id, created_at: 2.months.ago)
 order.order_details.new.info = boleto_detail
 order.save!
 

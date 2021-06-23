@@ -13,6 +13,13 @@ class Order < ApplicationRecord
 
   scope :from_date, ->(date) { where(created_at: date...) if date.present? }
   scope :from_payment_method, ->(payment_method) { where(payment_method_id: payment_method) if payment_method.present? }
+  scope :by_filter, -> (params) do
+    if params[:filter] == 'last_30_days' || !params.has_key?(:filter)
+      where('created_at >= ?', 30.days.ago.beginning_of_day)
+    elsif params[:filter] == 'last_90_days'
+      where('created_at >= ?', 90.days.ago.beginning_of_day)
+    end
+  end
 
   private
 
