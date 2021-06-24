@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe OrderDetail, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to(:info) }
+  it { should belong_to(:order) }
 end
