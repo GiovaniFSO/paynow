@@ -56,5 +56,6 @@ describe 'Admin update orders' do
     expect(page).to have_content('R$ 48,33')
     expect(page).to_not have_content('Rejeitar')
     expect(page).to have_link('Aprovar')
+    expect(order.status).to eq('pendente')
   end
 end

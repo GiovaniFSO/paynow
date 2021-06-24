@@ -13,8 +13,8 @@
     <h3>Nenhuma tentativa de pagamento efetuada</h3>
   <% else %>
     <h3>Histórico de transações</h3>
-  <% end %>
-  <table class="table">
+    <br>
+    <table class="table">
     <thead>
         <th>Data</th>
         <th>Status</th>
@@ -30,6 +30,8 @@
     <%end%>
     </tbody>
   </table>
+  <% end %>
+ 
 
   <% unless @order.aprovada?%>
     <%= link_to 'Aprovar', approved_admin_order_path(@order), method: :post %>

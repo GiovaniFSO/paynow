@@ -11,13 +11,15 @@
   </head>
 
   <body>
-    <% if admin_signed_in? || user_signed_in? %>
+    <% if admin_signed_in? ||  user_signed_in? %>
       <%= render 'shared/top_navbar', user: current_admin || current_user%>    
       <br>   
     <% end %>
     
       <div class="row">
-        <% if !current_page?(new_user_company_path) && (admin_signed_in? || user_signed_in?) %>
+        <% if !current_page?(new_user_company_path) && user_signed_in? %>
+          <%= render 'shared/sidebar_user' %>
+        <%elsif admin_signed_in? %>
           <%= render 'shared/sidebar' %>
         <% end %>
 

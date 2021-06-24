@@ -17,7 +17,7 @@ class Admin::OrdersController < ApplicationController
     order = Order.find(params[:id])
     order.transaction do 
       order.payments.new(date: DateTime.current, status_bank: bank_params[:status_bank], status: Payment.status[:rejeitado])
-      order.rejeitada!
+      order.pendente!
       redirect_to [:admin, order]
     end
   end

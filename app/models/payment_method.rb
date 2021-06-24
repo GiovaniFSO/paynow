@@ -5,4 +5,16 @@ class PaymentMethod < ApplicationRecord
 
   validates :fee, :name, :max_fee, :kind,  presence: true
   validates :fee, :max_fee, numericality: true
+
+  before_create :set_icon
+  
+  private
+
+  def set_icon
+    if self.icon.blank?
+      self.icon.attach(io: File.open(Rails.root.join('public/assets/boleto.png')), filename: 'boleto.png') if self.boleto?
+      self.icon.attach(io: File.open(Rails.root.join('public/assets/credit_card.jpg')), filename: 'credit_card.jpg') if self.credit_card?
+      self.icon.attach(io: File.open(Rails.root.join('public/assets/pix.jpeg')), filename: 'pix.jpeg') if self.pix?
+    end
+  end
 end

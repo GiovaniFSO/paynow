@@ -21,7 +21,7 @@ describe 'User view orders' do
 
     
     visit root_path
-    click_on 'Pedidos User'
+    click_on 'Pedidos'
 
     expect(page).to have_content('R$ 60,00')
     expect(page).to have_content('Curso Ruby on Rails')
@@ -56,7 +56,7 @@ describe 'User view orders' do
 
     
     visit root_path
-    click_on 'Pedidos User'
+    click_on 'Pedidos'
     click_on 'Últimos 90 Dias'
 
     expect(page).to have_content('R$ 60,00')
@@ -93,7 +93,7 @@ describe 'User view orders' do
 
     
     visit root_path
-    click_on 'Pedidos User'
+    click_on 'Pedidos'
     click_on 'Histórico Completo'
 
     expect(page).to have_content('R$ 60,00')
@@ -108,7 +108,7 @@ describe 'User view orders' do
   it 'empty orders' do
     user_login 
     visit root_path
-    click_on 'Pedidos User'
+    click_on 'Pedidos'
 
     expect(page).to have_content('Nenhum pedido efetuado')
   end

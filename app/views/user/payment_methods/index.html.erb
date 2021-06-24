@@ -7,6 +7,7 @@
       <th>Forma de Pagamento</th>
       <th>Taxa %</th>
       <th>Taxa Máxima</th>
+      <th>Status</th>
       <th colspan="3">Ação</th>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
       <td><%=payment_method.kind%></td>
       <td><%=number_to_percentage(payment_method.fee, precision: 2)  %></td>
       <td><%=number_to_currency payment_method.max_fee  %></td>
+      <td><%= payment_method.active ? 'Ativo' : 'Inativo'  %></td>
       <td>
         <% user_payment_method = UserPaymentMethod.find_by(user_id: current_user.id, payment_method_id: payment_method.id)%>
         <% if user_payment_method.blank? %>
