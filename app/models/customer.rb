@@ -11,7 +11,9 @@ class Customer < ApplicationRecord
   private
   
   def set_token
-    self.token = SecureRandom.hex(10)
-    set_token if Customer.exists?(token: token)
+    if self.token.blank?
+      self.token = SecureRandom.hex(10)
+      set_token if Customer.exists?(token: token)
+    end
   end
 end

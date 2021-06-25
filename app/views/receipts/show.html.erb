@@ -1,0 +1,19 @@
+<main class="container">
+  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+    <div class="lh-1">
+      <h1 class="h6 mb-0 text-white lh-1"><%=@site.title%></h1>
+      <small><%=@site.subtitle%></small>
+    </div>
+  </div>
+
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0">Data da publicação <%= l @site.publish.to_datetime %></h6>
+    <div class="d-flex text-muted pt-3">
+      <p class="pb-3 mb-0 small lh-sm" style="text-align: justify">
+        <%= sanitize @site.body%>
+      </p>
+    </div>
+    <%= link_to 'Voltar', root_path, class: 'btn btn-outline-secondary' %>
+  </div>
+
+</main>

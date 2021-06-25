@@ -66,7 +66,12 @@ Popular o banco de dados
 ```   
 
 
-## API Reference
+
+
+
+
+
+
 
 ### Criar um cliente
 URL
@@ -125,6 +130,90 @@ Código: 412 Precondition Failed
 }
 ```
 OU 
+```
+{
+    "errors": "Parâmetros inválidos"
+}
+```
+&nbsp;
+&nbsp;
+
+
+### Criar um pedido
+URL
+
+```http
+  POST /api/v1/orders
+```
+JSON - Boleto
+```
+{ 
+    "order": { 
+        "token_company": "0b224679b57e4c06e01f",
+        "token_product": "47ee8fba34b0e0543504",
+        "token_customer": "596f87698fb9f96491f2",
+        "payment_method_id": 1,
+        "boleto": {
+          "address": "Av. Paulista, 493"
+        }
+    }
+}
+```
+JSON - Cartão de credito
+```
+{ 
+    "order": { 
+        "token_company": "0b224679b57e4c06e01f",
+        "token_product": "47ee8fba34b0e0543504",
+        "token_customer": "596f87698fb9f96491f2",
+        "payment_method_id": 4,
+        "credit_card": {
+            "number": "12313213321412456432",
+            "name": "Giovani Fernandes",
+            "safe_code": 382
+          }
+    }
+}
+```
+JSON - Pix
+```
+{ 
+    "order": { 
+        "token_company": "0b224679b57e4c06e01f",
+        "token_product": "47ee8fba34b0e0543504",
+        "token_customer": "596f87698fb9f96491f2",
+        "payment_method_id": ""
+    }
+}
+```
+#### Success Response:
+
+Código: 201
+```
+{
+    "token": "8c50d9c71ec0c2dc3a8d",
+    "original_price": "12.53",
+    "final_price": "4.549154030327214684756584197",
+    "status": "pendente"
+}
+```
+
+
+#### Error Response:
+
+
+
+Código: 422 Unprocessable Entity
+```
+{
+    "address": [
+        "não pode ficar em branco"
+    ]
+}
+
+```
+
+Código: 412 Precondition Failed
 ```
 {
     "errors": "Parâmetros inválidos"

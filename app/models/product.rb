@@ -12,7 +12,9 @@ class Product < ApplicationRecord
   private
   
   def set_token
-    self.token = SecureRandom.hex(10)
-    set_token if Product.exists?(token: token)
+    if self.token.blank?
+      self.token = SecureRandom.hex(10)
+      set_token if Product.exists?(token: token)
+    end
   end
 end
