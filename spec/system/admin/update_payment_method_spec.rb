@@ -5,7 +5,7 @@ describe 'Admin update payment_method' do
     PaymentMethod.create(name: 'roxinho', fee: 2.5, max_fee: 15, kind: 1)
 
     admin_login
-    visit root_path
+    visit admin_root_path
     click_on 'Meios de pagamentos'
     click_on 'Editar'
     fill_in 'Nome', with: 'vermelhinho'

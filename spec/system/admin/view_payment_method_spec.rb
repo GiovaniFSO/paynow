@@ -3,7 +3,6 @@ require 'rails_helper'
 describe 'Admin view payment method' do 
   it 'must to be logged to view the payment methods' do 
     visit admin_payment_methods_path
-    
     expect(current_path).to eq(new_admin_session_path)
     expect(page).to have_content('Para continuar, efetue login ou registre-se')
   end
@@ -13,7 +12,7 @@ describe 'Admin view payment method' do
     PaymentMethod.create(name: 'laranjinha', fee: 3.5, max_fee: 20, kind: 2)
 
     admin_login
-    visit root_path
+    visit admin_root_path
     click_on 'Meios de pagamentos'
     
     expect(page).to have_content('laranjinha')
@@ -28,7 +27,7 @@ describe 'Admin view payment method' do
     
 
     admin_login
-    visit root_path
+    visit admin_root_path
     click_on 'Meios de pagamentos'
     all('.details').last.click
 
@@ -41,7 +40,7 @@ describe 'Admin view payment method' do
 
   it 'and no payment method available' do 
     admin_login
-    visit root_path
+    visit admin_root_path
     click_on 'Meios de pagamentos'
 
     expect(page).to have_content('Nenhum meio de pagamento cadastrado')

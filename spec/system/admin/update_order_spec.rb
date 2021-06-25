@@ -16,7 +16,7 @@ describe 'Admin update orders' do
     order.save!
 
     admin_login
-    visit root_path
+    visit admin_root_path
     click_on 'Pedidos'
     click_on 'Visualizar'
     click_on 'Aprovar'
@@ -45,7 +45,7 @@ describe 'Admin update orders' do
     order.save!
 
     admin_login
-    visit root_path
+    visit admin_root_path
     click_on 'Pedidos'
     click_on 'Visualizar'
     click_on 'Rejeitar'

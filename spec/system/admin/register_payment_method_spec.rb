@@ -10,7 +10,7 @@ describe 'Admin register payment method' do
 
   it 'successfully boleto with image' do
     admin_login
-    visit root_path
+    visit admin_root_path
     
     click_on 'Meios de pagamentos'
     click_on 'Novo meio de pagamento'
@@ -31,7 +31,7 @@ describe 'Admin register payment method' do
   
   it 'successfully boleto without image' do
     admin_login
-    visit root_path
+    visit admin_root_path
     
     click_on 'Meios de pagamentos'
     click_on 'Novo meio de pagamento'
@@ -51,7 +51,7 @@ describe 'Admin register payment method' do
 
   it 'successfully credit card with image' do
     admin_login
-    visit root_path
+    visit admin_root_path
     
     click_on 'Meios de pagamentos'
     click_on 'Novo meio de pagamento'
@@ -72,7 +72,7 @@ describe 'Admin register payment method' do
 
   it 'successfully credit card without image' do
     admin_login
-    visit root_path
+    visit admin_root_path
     
     click_on 'Meios de pagamentos'
     click_on 'Novo meio de pagamento'
@@ -92,7 +92,7 @@ describe 'Admin register payment method' do
 
   it 'successfully credit card with image' do
     admin_login
-    visit root_path
+    visit admin_root_path
     
     click_on 'Meios de pagamentos'
     click_on 'Novo meio de pagamento'
@@ -113,7 +113,7 @@ describe 'Admin register payment method' do
 
   it 'successfully credit card without image' do
     admin_login
-    visit root_path
+    visit admin_root_path
     
     click_on 'Meios de pagamentos'
     click_on 'Novo meio de pagamento'
@@ -133,7 +133,7 @@ describe 'Admin register payment method' do
 
   it "and attributes can't be blank " do
     admin_login
-    visit root_path
+    visit admin_root_path
     click_on 'Meios de pagamentos'
     click_on 'Novo meio de pagamento'
 

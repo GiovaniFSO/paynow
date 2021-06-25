@@ -16,7 +16,7 @@ describe 'Admin view orders' do
     order.save!
 
     admin_login
-    visit root_path
+    visit admin_root_path
     click_on 'Pedidos'
 
     expect(page).to have_content('Curso Ruby on Rails')
