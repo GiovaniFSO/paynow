@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :admins  
 
   get '/admin', to: 'admin/dashboard#index', as: 'admin_root'
-  root 'dashboard#index'
-  resources :dashboard, only: %i[index]
+  root 'receipts#index'
+  resources :receipts, only: %i[index]
   namespace :admin do   
     resources :dashboard, only: %i[index]
     resources :payment_methods

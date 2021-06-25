@@ -7,7 +7,7 @@ describe 'User register product' do
                                           icon: fixture_file_upload(Rails.root.join('public', 'assets', 'boleto.png')))
     boleto = Boleto.create(bank_code: '001', agency: '8764-0', account: '183725172893')
     UserPaymentMethod.create!(user_id: user.id, payment_method_id: payment_method.id, kind: boleto)
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Produtos'
     click_on 'Cadastrar Produto'
     
@@ -29,7 +29,7 @@ describe 'User register product' do
                                           icon: fixture_file_upload(Rails.root.join('public', 'assets', 'boleto.png')))
     boleto = Boleto.create(bank_code: '001', agency: '8764-0', account: '183725172893')
     UserPaymentMethod.create!(user_id: user.id, payment_method_id: payment_method.id, kind: boleto)
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Produtos'
     click_on 'Cadastrar Produto'
     

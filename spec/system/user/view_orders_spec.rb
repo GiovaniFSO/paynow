@@ -20,7 +20,7 @@ describe 'User view orders' do
     other_order.save!
 
     
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Pedidos'
 
     expect(page).to have_content('R$ 60,00')
@@ -55,7 +55,7 @@ describe 'User view orders' do
 
 
     
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Pedidos'
     click_on 'Últimos 90 Dias'
 
@@ -92,7 +92,7 @@ describe 'User view orders' do
 
 
     
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Pedidos'
     click_on 'Histórico Completo'
 
@@ -107,7 +107,7 @@ describe 'User view orders' do
 
   it 'empty orders' do
     user_login 
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Pedidos'
 
     expect(page).to have_content('Nenhum pedido efetuado')

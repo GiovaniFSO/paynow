@@ -8,7 +8,7 @@ describe 'User edit details from payment methods' do
     pix = Pix.create(key: '123fas31fj1hy2oi2211', bank_code: '001')
     UserPaymentMethod.create!(user_id: user.id, payment_method_id: payment_method.id, kind: pix)
     
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Meios de pagamentos'
     click_on 'Editar'
     fill_in 'Chave PIX', with: '98753dgeyw63uwiq72iq' 
@@ -27,7 +27,7 @@ describe 'User edit details from payment methods' do
     pix = Pix.create(key: '123fas31fj1hy2oi2211', bank_code: '001')
     UserPaymentMethod.create!(user_id: user.id, payment_method_id: payment_method.id, kind: pix)
     
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Meios de pagamentos'
     click_on 'Editar'
     fill_in 'Chave PIX', with: '98753geyw63uwiq72iq' 
@@ -46,7 +46,7 @@ describe 'User edit details from payment methods' do
     boleto = Boleto.create(bank_code: '001', agency: '8764-0', account: '183725172893')
     UserPaymentMethod.create!(user_id: user.id, payment_method_id: payment_method.id, kind: boleto)
     
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Meios de pagamentos'
     click_on 'Editar'
     fill_in 'Código do banco', with: '002' 
@@ -67,7 +67,7 @@ describe 'User edit details from payment methods' do
     boleto = Boleto.create(bank_code: '001', agency: '8764-0', account: '183725172893')
     UserPaymentMethod.create!(user_id: user.id, payment_method_id: payment_method.id, kind: boleto)
     
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Meios de pagamentos'
     click_on 'Editar'
     fill_in 'Código do banco', with: '12302' 
@@ -88,7 +88,7 @@ describe 'User edit details from payment methods' do
     credit_card = CreditCard.create(account: '12312312312312312312')
     UserPaymentMethod.create!(user_id: user.id, payment_method_id: payment_method.id, kind: credit_card)
     
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Meios de pagamentos'
     click_on 'Editar'
     fill_in 'Numero do cartão', with: '32132132132132132132' 
@@ -105,7 +105,7 @@ describe 'User edit details from payment methods' do
     credit_card = CreditCard.create(account: '12312312312312312312')
     UserPaymentMethod.create!(user_id: user.id, payment_method_id: payment_method.id, kind: credit_card)
     
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Meios de pagamentos'
     click_on 'Editar'
     fill_in 'Numero do cartão', with: '321321321321321321' 

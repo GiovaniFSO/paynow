@@ -12,7 +12,7 @@ class User::CompaniesController < ApplicationController
         @user.company_id = @company.id
         @user.administrador!
         @user.save
-        redirect_to '/'
+        redirect_to user_dashboard_index_path
       else
         render :new  
       end

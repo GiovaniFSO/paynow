@@ -15,7 +15,7 @@ describe 'User update product' do
 
     
     Product.create(name: 'Curso Ruby on Rails', value: 60.0, user_payment_method_id: 2, discount: 7.0)
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Produtos'
     click_on 'Cadastrar Produto'
     
@@ -45,7 +45,7 @@ describe 'User update product' do
     
     Product.create(name: 'Curso Ruby on Rails', value: 60.0, user_payment_method_id: 2, discount: 7.0, user_id: user.id)
 
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Produtos'
     click_on 'Editar'
     fill_in 'Nome', with: 'Curso Laravel'
@@ -77,7 +77,7 @@ describe 'User update product' do
 
     
     Product.create(name: 'Curso Ruby on Rails', value: 60.0, user_payment_method_id: 2, discount: 7.0)
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Produtos'
     click_on 'Cadastrar Produto'
     

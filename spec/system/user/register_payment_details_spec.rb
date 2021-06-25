@@ -5,7 +5,7 @@ describe 'User register paymente details from your company' do
     PaymentMethod.create(name: 'roxinho', fee: 2.5, max_fee: 15, kind: 3, 
                                           icon: fixture_file_upload(Rails.root.join('public', 'assets', 'pix.jpeg')))
     user_login
-    visit root_path
+    visit user_dashboard_index_path
 
     click_on 'Meios de pagamentos'
     click_on 'Configurar'
@@ -23,7 +23,7 @@ describe 'User register paymente details from your company' do
     payment_method = PaymentMethod.create(name: 'roxinho', fee: 2.5, max_fee: 15, kind: 3, 
                                           icon: fixture_file_upload(Rails.root.join('public', 'assets', 'pix.jpeg')))
     user_login
-    visit root_path
+    visit user_dashboard_index_path
 
     click_on 'Meios de pagamentos'
     click_on 'Configurar'
@@ -38,7 +38,7 @@ describe 'User register paymente details from your company' do
     PaymentMethod.create(name: 'vermelhinho', fee: 2.5, max_fee: 15, kind: 1, 
                                           icon: fixture_file_upload(Rails.root.join('public', 'assets', 'boleto.png')))
     user_login
-    visit root_path
+    visit user_dashboard_index_path
 
     click_on 'Meios de pagamentos'
     click_on 'Configurar'
@@ -59,7 +59,7 @@ describe 'User register paymente details from your company' do
                                           icon: fixture_file_upload(Rails.root.join('public', 'assets', 'boleto.png')))
     
     user_login
-    visit root_path
+    visit user_dashboard_index_path
     
     click_on 'Meios de pagamentos'
     click_on 'Configurar'
@@ -74,7 +74,7 @@ describe 'User register paymente details from your company' do
     PaymentMethod.create(name: 'amarelinho', fee: 2.5, max_fee: 15, kind: 2, 
                                           icon: fixture_file_upload(Rails.root.join('public', 'assets', 'credit_card.jpg')))
     user_login
-    visit root_path
+    visit user_dashboard_index_path
 
     click_on 'Meios de pagamentos'
     click_on 'Configurar'
@@ -90,7 +90,7 @@ describe 'User register paymente details from your company' do
     payment_method = PaymentMethod.create(name: 'amarelinho', fee: 2.5, max_fee: 15, kind: 2, 
                                           icon: fixture_file_upload(Rails.root.join('public', 'assets', 'credit_card.jpg')))
     user_login
-    visit root_path
+    visit user_dashboard_index_path
 
     click_on 'Meios de pagamentos'
     click_on 'Configurar'

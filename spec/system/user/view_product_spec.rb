@@ -9,7 +9,7 @@ describe 'User view product' do
     user_payment = UserPaymentMethod.create!(user_id: user.id, payment_method_id: payment_method.id, kind: boleto)
     Product.create!(name: 'Curso Ruby', value: 55.04, user_payment_method_id: user_payment.id, discount: 3.5, user_id: user.id)
     Product.create!(name: 'Curso Laravel', value: 35, user_payment_method_id: user_payment.id, discount: 2.7, user_id: user.id)
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Produtos'
 
     expect(page).to have_content('Curso Ruby')
@@ -22,7 +22,7 @@ describe 'User view product' do
 
   it 'without product registered' do 
     user = user_login
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Produtos'
 
     expect(page).to have_content('Nenhum produto cadastrado')
@@ -35,7 +35,7 @@ describe 'User view product' do
     boleto = Boleto.create(bank_code: '001', agency: '8764-0', account: '183725172893')
     user_payment = UserPaymentMethod.create!(user_id: user.id, payment_method_id: payment_method.id, kind: boleto)
     Product.create!(name: 'Curso Ruby', value: 55.04, user_payment_method_id: user_payment.id, discount: 3.5, user_id: user.id)
-    visit root_path
+    visit user_dashboard_index_path
     click_on 'Produtos'
     click_on 'Visualizar'
 

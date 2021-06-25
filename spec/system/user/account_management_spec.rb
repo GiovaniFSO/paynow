@@ -32,7 +32,7 @@ describe 'User account Management' do
 
       expect(page).to have_content 'Login efetuado com sucesso.'
       expect(page).to have_link 'Sair'
-      expect(current_path).to eq root_path
+      expect(current_path).to eq user_dashboard_index_path
     end 
 
     it 'with email not valid' do 
@@ -133,9 +133,9 @@ describe 'User account Management' do
       user = User.create!(email: 'giovani@codeplay.com.br', password: '123456', password_confirmation: '123456')  
       
       login_as user, scope: :user
-      visit root_path
+      visit user_dashboard_index_path
       click_on 'Sair'
-
+      
       expect(page).to_not have_text('giovani@codeplay.com.br')
       expect(current_path).to eq(root_path)
       #expect(page).to have_selector(:link_or_button, 'Entrar')
