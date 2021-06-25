@@ -1,5 +1,94 @@
-<% if user_signed_in? %>
-    <h3>Dashboard usuarioooo</h3>
-<%else%>
-    <%= link_to 'Login', new_user_session_path%>
-<% end %>
+<nav class="navbar-light bg-light shadow p-3 mb-3 border-bottom">
+    <div class="container-fluid">
+      <div class="d-flex flex-wrap align-items-center">
+
+        <div class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"></div>
+
+        <div class="text-end">  
+            <%= link_to 'Login', new_user_session_path%>
+        </div>
+    </div>
+</nav>
+
+<div class="px-4 py-5 my-5 text-center" style="background-color: white">
+  <h1 class="display-5 fw-bold">Emitir Recibo</h1>
+  <div class="col-lg-6 mx-auto">
+    
+    <label for="firstName" class="form-label"></label>
+        <%= form_with url: root_path, method: :get do |f| %>
+            <div class="col-lg-12">
+            <%= f.label :token_order, "Código do Recibo:" %>
+            <%= f.text_field :token_order, class: 'col-lg-8' %>
+            <%= button_tag type: 'submit', class: "btn btn-base" do %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                  <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            <% end %>
+            </div>
+        <% end %>
+  </div>
+</div>
+
+<%if @payment%>
+<div class="container">
+<div class="row g-5">
+    <div class="col-md-12 col-lg-12">
+        <h4 class="mb-3">Recibo</h4>
+        <form class="needs-validation" novalidate="">
+          <div class="row g-3">
+            <div class="col-sm-3">
+              <label for="order_created_at" class="form-label">Data do vencimento</label>
+              <input class="form-control"  id="order_created_at" value="<%=l @payment.order.created_at%>" readonly>
+            </div>
+
+            <div class="col-sm-3">
+              <label for="payment_created_at" class="form-label">Data efetiva do pagamento</label>
+              <input class="form-control" id="payment_created_at" value="<%= l @payment.date%>" readonly>
+            </div>
+
+            <div class="col-2">
+              <label for="bank_code" class="form-label">Código do banco</label>
+              <div class="input-group has-validation">  
+                <input class="form-control" id="bank_code" value="<%=@bank_code%>" readonly>
+              </div>
+            </div>
+            
+            <div class="col-md-4">
+              <label for="bank_method" class="form-label">Metodo de Pagamento</label>
+              <input  class="form-control" id="bank_method" value="<%=@payment.order.payment_method.bank_method%>" readonly>
+            </div>
+
+            <div class="col-6">
+              <label for="product_name" class="form-label">Produto</label>
+              <input class="form-control" id="product_name" value="<%=@payment.order.product.name%>" readonly>
+            </div>
+        </div>
+        <div class="row pt-3">    
+            <div class="col-4">
+              <label for="original_price" class="form-label">Valor</label>
+              <input class="form-control" id="original_price" value="<%=number_to_currency @payment.order.original_price %>" readonly>
+            </div>
+
+            <div class="col-4">
+              <label for="final_price" class="form-label">Valor com desconto</label>
+              <input class="form-control" id="final_price" value="<%=number_to_currency @payment.order.final_price %>" readonly>
+            </div>
+
+            <div class="col-md-3">
+              <label for="discount" class="form-label">Desconto %</label>
+              <input class="form-control" id="discount" value="<%=number_to_percentage(@payment.order.product.discount, precision: 2) %>" readonly>
+            </div>
+
+            <div class="col-md-3 pt-3">
+              <label for="payment_token" class="form-label">Código do recibo</label>
+              <input class="form-control" id="payment_token" value="<%=@payment.token %>" readonly>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+ </div>
+ <%elsif defined?(@payment) && @payments.blank?%>
+    <h3>Nenhum recibo encontrado</h3>
+ <%end%>

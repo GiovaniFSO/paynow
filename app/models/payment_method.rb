@@ -7,6 +7,10 @@ class PaymentMethod < ApplicationRecord
   validates :fee, :max_fee, numericality: true
 
   before_create :set_icon
+
+  def bank_method
+    "#{name} - #{kind.titleize}"
+  end
   
   private
 

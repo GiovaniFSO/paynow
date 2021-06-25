@@ -8,6 +8,7 @@ PaymentMethod.create!(id: 6, kind: "pix", name: "Inter", fee: 0.9e0, max_fee: 0.
 Company.create!(id: 1, cnpj: "12314123141231",name: "CodePlay",address: "Av. Capitão Ene Garcez",email: "company@codeplay.com",token: "0b224679b57e4c06e01f",block: "desbloqueado")
 Customer.create(id: 1, cpf: "11111113111", name: "Giovani Fernandes", token: "596f87698fb9f96491f2")
 User.create(id: 1, email: "usuario@codeplay.com", password: "123456", company_id: 1, adm: "administrador")
+User.create(id: 2, email: "employee@codeplay.com", password: "123456", company_id: 1, adm: "usuario")
 Boleto.create(id: 1, bank_code: "001", agency: "5780-0", account: "1234-2")
 Boleto.create(id: 2, bank_code: "321", agency: "4321-2", account: "2331-2")
 CreditCard.create(id: 1, account: "12314123123123123132")

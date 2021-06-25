@@ -18,7 +18,7 @@
     <td><%=number_to_currency payment_method.max_fee  %></td>
     <td><%=link_to '+ detalhes', [:admin, payment_method], class: 'details'%></td>
     <td><%=link_to 'Editar', edit_admin_payment_method_path(payment_method)%></td>
-    <td><%= link_to 'Deletar', [:admin, payment_method], method: :delete %></td>
+    <!-- <td><%#= link_to 'Deletar', [:admin, payment_method], method: :delete %></td> -->
   </tr>
 <%end%>
 </tbody>

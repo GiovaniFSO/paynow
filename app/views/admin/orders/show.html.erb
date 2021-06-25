@@ -19,6 +19,7 @@
         <th>Data</th>
         <th>Status</th>
         <th>Cód do banco</th>
+        <th>Token da Transação</th>
     </thead>
     <tbody>
     <% @order.payments.each do |payment|%>
@@ -26,6 +27,7 @@
         <td><%= l payment.date %></td>
         <td><%= payment.status.capitalize %></td>
         <td><%= payment.status_bank.titleize  %></td>
+        <td><%= payment.token  %></td>
       </tr>
     <%end%>
     </tbody>

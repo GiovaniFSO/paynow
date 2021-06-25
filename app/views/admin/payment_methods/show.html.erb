@@ -5,5 +5,5 @@
   <dd><%= number_to_currency @payment_method.max_fee %></dd>
   <dt><%= image_tag(@payment_method.icon)%></dt>
   <dd><%= @payment_method.active ? 'Ativo' : 'Inativo' %></dd>
-  <%= link_to 'Deletar', [:admin, @payment_method], method: :delete %>
+  <%#= link_to 'Deletar', [:admin, @payment_method], method: :delete %>
 </d1>
